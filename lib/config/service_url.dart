@@ -1,0 +1,1 @@
+const works_url = 'http://test.baixingliangfan.cn/baixing/wxmini/homePageContent';
