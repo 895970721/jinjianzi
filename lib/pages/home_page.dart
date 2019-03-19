@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'home_childpages.dart/appbar_ui.dart';
 import 'home_childpages.dart/home_content..dart';
 import '../service/service_method.dart';
