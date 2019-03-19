@@ -26,6 +26,7 @@ class circleview extends StatefulWidget {
 class _circleviewState extends State<circleview> {
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
     return Container(
       margin: EdgeInsets.only(bottom: 0.0),
       height: ScreenUtil().setHeight(400),
@@ -149,14 +150,15 @@ class _TabBarDemoStateState extends State<TabBarDemoState> with SingleTickerProv
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
     return Container(
+      margin: EdgeInsets.only(bottom: 0),
       height: ScreenUtil().setHeight(805),
       child:
     new ListView(
       scrollDirection: Axis.vertical,
       children: <Widget>[
           new Container(
+          margin: EdgeInsets.only(top:0),
           height: ScreenUtil().setHeight(120),
-          border: new Border.all(color: Color(0xFFFF0000), width: 0.5),
           decoration: new BoxDecoration(
           border: new Border.all(width: 2.0, color: Colors.black12),
           ),

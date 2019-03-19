@@ -47,7 +47,7 @@ class person2 extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Container(
-            width: ScreenUtil().setWidth(380),
+            width: ScreenUtil().setWidth(383),
             child:OutlineButton(
             shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -181,7 +181,8 @@ class _TabBarDemoStateState extends State<TabBarDemoState> with SingleTickerProv
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
     return Container(
-      height: ScreenUtil().setHeight(872),
+      margin: EdgeInsets.only(top: 0),
+      height: ScreenUtil().setHeight(873),
       child:
     new ListView(
       scrollDirection: Axis.vertical,
@@ -189,7 +190,6 @@ class _TabBarDemoStateState extends State<TabBarDemoState> with SingleTickerProv
           new Container(
           margin: EdgeInsets.only(top:0),
           height: ScreenUtil().setHeight(120),
-          border: new Border.all(color: Color(0xFFFF0000), width: 0.5),
           decoration: new BoxDecoration(
           border: new Border.all(width: 2.0, color: Colors.black12),
           ),
@@ -212,6 +212,7 @@ class _TabBarDemoStateState extends State<TabBarDemoState> with SingleTickerProv
         ),
 
        new Container(
+         margin: EdgeInsets.only(top: 0),
         height: ScreenUtil().setHeight(700),
         child:
         new TabBarView(
