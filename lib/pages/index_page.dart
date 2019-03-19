@@ -26,9 +26,9 @@ class _IndexPageState extends State<IndexPage> {
   ////保存页面的数组
   final List<Widget> tabBodies = [
     HomePage(),
-    FoundPage(),
+    DoctorPage(),
     MessagePage(),
-    MyPage()
+    person()
   ];
   
   ///保存底部导航栏组件
