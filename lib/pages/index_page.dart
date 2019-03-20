@@ -26,7 +26,7 @@ class _IndexPageState extends State<IndexPage> {
   ////保存页面的数组
   final List<Widget> tabBodies = [
     HomePage(),
-    DoctorPage(),
+    found(),
     message(),
     person()
   ];

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class message extends StatefulWidget {
   @override
@@ -23,8 +22,12 @@ class _messageState extends State<message> with SingleTickerProviderStateMixin{
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('消息'),
+        backgroundColor: Colors.pink,
+        title: new Center(child: new Text('消息')),
         bottom: new TabBar(
+          indicatorColor: Colors.white,
+          unselectedLabelStyle: TextStyle(fontSize: 12.0),
+          labelStyle: new TextStyle(fontSize: 16.0),
           tabs: <Widget>[
             new Tab(
               icon: new Icon(Icons.favorite),
