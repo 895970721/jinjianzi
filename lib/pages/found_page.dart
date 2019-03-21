@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../six/clear_hair.dart';
+import '../six/blow_hair.dart';
+import '../six/nurse_hair.dart';
+import '../six/blind_hair.dart';
+import '../six/model_hair.dart';
+import '../six/tool_hair.dart';
 
 class found extends StatefulWidget {
   @override
@@ -82,7 +88,11 @@ class _gridState extends State<grid> {
             margin: EdgeInsets.only(left: 20),
           child:
           new FloatingActionButton(
-            onPressed: (){},
+            onPressed: (){
+              print('This is first page');
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => clear_hair()));
+            },
             foregroundColor: Colors.black,
             backgroundColor: Colors.green[200],
             child: new Text('洗发'),
@@ -92,7 +102,10 @@ class _gridState extends State<grid> {
          Container(
           child:
           new FloatingActionButton(
-            onPressed: (){},
+            onPressed: (){
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => blow_hair()));
+            },
             foregroundColor: Colors.blue,
             backgroundColor: Colors.yellow,
             child: new Text('吹发'),
@@ -103,7 +116,10 @@ class _gridState extends State<grid> {
             margin: EdgeInsets.only(right: 20),
           child:
           new FloatingActionButton(
-            onPressed: (){},
+            onPressed: (){
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => nurse_hair()));
+            },
             foregroundColor: Colors.purple[400],
             backgroundColor: Colors.pink[300],
             child: new Text('护理'),
@@ -123,7 +139,10 @@ class _gridState extends State<grid> {
             margin: EdgeInsets.only(left: 20),
           child:
           new FloatingActionButton(
-            onPressed: (){},
+            onPressed: (){
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => blind_hair()));
+            },
             foregroundColor: Colors.black,
             backgroundColor: Colors.brown[300],
             child: new Text('盲区'),
@@ -133,7 +152,10 @@ class _gridState extends State<grid> {
          Container(
           child:
           new FloatingActionButton(
-            onPressed: (){},
+            onPressed: (){
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => model_hair()));
+            },
             foregroundColor: Colors.white,
             backgroundColor: Colors.black,
             child: new Text('造型'),
@@ -144,7 +166,10 @@ class _gridState extends State<grid> {
             margin: EdgeInsets.only(right: 20),
           child:
           new FloatingActionButton(
-            onPressed: (){},
+            onPressed: (){
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => tool_hair()));
+            },
             foregroundColor: Colors.black,
             backgroundColor: Colors.red,
             child: new Text('工具'),
