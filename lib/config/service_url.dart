@@ -1,1 +1,1 @@
-const works_url = 'http://test.baixingliangfan.cn/baixing/wxmini/homePageContent';
+const works_url = 'http://jinjianzi.top:8080/api/allworks/limit';//works随机16条

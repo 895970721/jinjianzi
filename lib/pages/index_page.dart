@@ -70,7 +70,10 @@ class _IndexPageState extends State<IndexPage> {
       floatingActionButton: FAB(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomBar(),
-      body: currentPage,
+      body: IndexedStack(
+        index: currentIndex,
+        children: tabBodies,
+      )
     );
   }
   //浮动圆形

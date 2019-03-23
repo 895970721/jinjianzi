@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'home_childpages.dart/appbar_ui.dart';
 import 'home_childpages.dart/home_content..dart';
-import '../service/service_method.dart';
-import 'dart:async';
 
 class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
+
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  void initState() {
+    super.initState();
+    print('HomePage initState');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,9 +23,10 @@ class _HomePageState extends State<HomePage> {
         title: HeadWidget(),
         backgroundColor: Colors.white,
       ),
-      body: home_content(),
+      body: HomeContent(),
     );
   }
+
 }
 
 

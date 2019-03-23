@@ -1,52 +1,137 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../service/service_method.dart';
+import '../../config/service_url.dart';
 
-class home_content extends StatefulWidget {
-  _home_contentState createState() => _home_contentState();
+class HomeContent extends StatefulWidget {
+  _HomeContentState createState() => _HomeContentState();
 }
 
-class _home_contentState extends State<home_content> {
+class _HomeContentState extends State<HomeContent>{
 
-  List<Map> workList;
+  GlobalKey<RefreshFooterState> _footerKey = new GlobalKey<RefreshFooterState>();
+
+  void initState() { 
+    super.initState();
+    _getWorksList();
+  }
+
+  var workslist =[];
 
   @override
   Widget build(BuildContext context) {
+    workslist.toString();
+    List<Map> workList = (workslist as List).cast();
     return Container(
        child: EasyRefresh(
-         child: ListView(
-           children: <Widget>[
-           ],
-         ),
-       )
+         child: GridView.builder(
+          padding:EdgeInsets.all(10.0),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10.0,
+            mainAxisSpacing: 10.0
+          ),
+            itemCount: workList.length,
+            itemBuilder:(context,index){
+              return WorksItem(workList,index);
+          }
+        ),
+        loadMore: ()async{
+          print('开始加载更多');
+          await request(works_url).then((val){
+            var data =val;
+            setState(() {
+              workslist.addAll(data);
+            });
+          });
+        },
+        refreshFooter: ClassicsFooter(
+                key:_footerKey,
+                bgColor:Colors.white,
+                textColor: Colors.pink,
+                moreInfoColor: Colors.pink,
+                showMore: true,
+                noMoreText: '',
+                moreInfo: '加载中',
+                loadReadyText:'上拉加载....'
+              ),
+      )
     );
   }
-}
-
-Widget worksItem(){
+  Widget WorksItem(workList,index){
   return InkWell(
     onTap: (){},
     child: Container(
       width: ScreenUtil().setWidth(350),
-      padding: EdgeInsets.all(5.0),
-      margin:EdgeInsets.only(bottom:3.0),
+      height: ScreenUtil().setHeight(350),
       child: Column(
         children: <Widget>[
-          Image.network('https://jspang.com/static//myimg/blogtouxiang.jpg'),
-          Text(
-            '不同于小卷烫发的灵动活泼，大卷烫发更讲究的是成熟与气场，让女生看上去更加落落大方。常见的大卷烫发发型有偏分大卷烫发、空气刘海大卷烫发、欧美风大卷烫发、韩式大卷烫发、个性大卷烫发、露额大卷烫发、凌乱感大卷烫发、大卷烫发半扎发',
+          Container(
+            width: ScreenUtil().setWidth(350),
+            height: ScreenUtil().setHeight(285),
+            child: Image(
+              fit: BoxFit.fill,
+              image: NetworkImage(workList[index]['img_url']),
+            )
+          ),
+          Container(
+            padding: EdgeInsets.all(5.0),
+            child: Text(
+            workList[index]['content'],
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize:ScreenUtil().setSp(26)),
-          )
+            style: TextStyle(
+              fontSize:ScreenUtil().setSp(24),
+              ),
+            ),
+          ),
+          _Bottom(workList,index),
         ],
       ),
     ),
   );
 }
 
-Widget twoworks(){
-  return Row(
-    children: <Widget>[],
+Widget _Bottom(workList,index){
+  return Container(
+    padding: EdgeInsets.only(left:5.0),
+    child: Row(
+      children: <Widget>[
+        Text(
+          workList[index]['nick_name']
+        ),
+        Container(
+          padding: EdgeInsets.only(left: 120),
+          child: Row(
+            children: <Widget>[
+              Container(
+                child:Icon(
+                  Icons.favorite_border,
+                  size: 15,
+                ),
+              ),
+              Text(
+                workList[index]['good_number'].toString()
+                ),
+            ],
+          ),
+        ),
+      ],
+    ),
   );
 }
+
+  void _getWorksList() async{
+    await request(works_url).then((val){
+      var data = val;
+      setState(() {
+       workslist = data;
+      });
+    });
+  }
+
+}
+
+
+
 
