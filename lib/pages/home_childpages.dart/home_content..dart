@@ -64,7 +64,7 @@ class _HomeContentState extends State<HomeContent>{
     onTap: (){},
     child: Container(
       width: ScreenUtil().setWidth(350),
-      height: ScreenUtil().setHeight(350),
+      height: ScreenUtil().setHeight(400),
       child: Column(
         children: <Widget>[
           Container(
@@ -98,16 +98,17 @@ Widget _Bottom(workList,index){
     child: Row(
       children: <Widget>[
         Text(
-          workList[index]['nick_name']
+          workList[index]['nick_name'],
+          style: TextStyle(fontSize:ScreenUtil().setSp(23)),
         ),
         Container(
-          padding: EdgeInsets.only(left: 120),
+          padding: EdgeInsets.only(left: 110),
           child: Row(
             children: <Widget>[
               Container(
                 child:Icon(
                   Icons.favorite_border,
-                  size: 15,
+                  size: 14,
                 ),
               ),
               Text(
