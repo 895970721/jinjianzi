@@ -6,7 +6,7 @@ import '../six/nurse_hair.dart';
 import '../six/blind_hair.dart';
 import '../six/model_hair.dart';
 import '../six/tool_hair.dart';
-
+import '../Video/VideoApp.dart';
 class found extends StatefulWidget {
   @override
   _foundState createState() => _foundState();
@@ -56,9 +56,9 @@ class _foundState extends State<found> with SingleTickerProviderStateMixin{
       body: new TabBarView(
         controller: _tabController,
         children: <Widget>[
-          new Center(child: grid()),
-          new Center(child: new Text('船')),
-          new Center(child: new Text('巴士')),
+          new Center(child: grid()),//最新页面
+          new Center(child: VideoApp()),//最热页面
+          new Center(child: new Text('巴士')),//我的发布页面
         ],
       ),
     );
@@ -66,7 +66,7 @@ class _foundState extends State<found> with SingleTickerProviderStateMixin{
 }
 
 
-
+//最新页面
 class grid extends StatefulWidget {
   @override
   _gridState createState() => _gridState();
@@ -89,7 +89,6 @@ class _gridState extends State<grid> {
           child:
           new FloatingActionButton(
             onPressed: (){
-              print('This is first page');
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => clear_hair()));
             },
@@ -225,3 +224,4 @@ class _gridState extends State<grid> {
     );
   }
 }
+
