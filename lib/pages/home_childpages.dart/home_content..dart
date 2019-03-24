@@ -3,6 +3,7 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../service/service_method.dart';
 import '../../config/service_url.dart';
+import 'home_details.dart';
 
 class HomeContent extends StatefulWidget {
   _HomeContentState createState() => _HomeContentState();
@@ -26,11 +27,11 @@ class _HomeContentState extends State<HomeContent>{
     return Container(
        child: EasyRefresh(
          child: GridView.builder(
-          padding:EdgeInsets.all(10.0),
+          padding:EdgeInsets.all(5.0),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 10.0,
-            mainAxisSpacing: 10.0
+            mainAxisSpacing: 8.0
           ),
             itemCount: workList.length,
             itemBuilder:(context,index){
@@ -61,7 +62,16 @@ class _HomeContentState extends State<HomeContent>{
   }
   Widget WorksItem(workList,index){
   return InkWell(
-    onTap: (){},
+    onTap: (){
+      Navigator.push(
+        context,
+        new MaterialPageRoute(
+          builder: (BuildContext context){
+            return new Home_details(works_id:workList[index]['works_id']);
+          }
+        ),
+      );
+    },
     child: Container(
       width: ScreenUtil().setWidth(350),
       height: ScreenUtil().setHeight(400),
@@ -76,7 +86,8 @@ class _HomeContentState extends State<HomeContent>{
             )
           ),
           Container(
-            padding: EdgeInsets.all(5.0),
+            height: ScreenUtil().setHeight(50),
+            padding: EdgeInsets.fromLTRB(5, 5, 0, 0),
             child: Text(
             workList[index]['content'],
             overflow: TextOverflow.ellipsis,
@@ -94,7 +105,8 @@ class _HomeContentState extends State<HomeContent>{
 
 Widget _Bottom(workList,index){
   return Container(
-    padding: EdgeInsets.only(left:5.0),
+    height: ScreenUtil().setHeight(40),
+    padding: EdgeInsets.fromLTRB(5, 2, 0, 0),
     child: Row(
       children: <Widget>[
         Text(
