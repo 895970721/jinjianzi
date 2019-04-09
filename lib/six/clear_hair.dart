@@ -26,7 +26,7 @@ class _clear_hairState extends State<clear_hair> {
      List<Map> workList = (list as List).cast();
     return Scaffold(
        appBar: AppBar(
-        backgroundColor: Colors.pink[300],
+        backgroundColor: Colors.black,
         title: Text('洗发技巧'),),
       body: EasyRefresh(
       child: ListView.builder(

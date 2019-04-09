@@ -26,7 +26,7 @@ class _blow_hairState extends State<blow_hair> {
      List<Map> workList = (list as List).cast();
     return Scaffold(
        appBar: AppBar(
-        backgroundColor: Colors.pink[300],
+        backgroundColor: Colors.black,
         title: Text('吹发技巧'),),
       body: EasyRefresh(
       child: ListView.builder(

@@ -30,7 +30,7 @@ class _foundState extends State<found> with SingleTickerProviderStateMixin{
     return new Scaffold(
       appBar: new AppBar(
         title: new Center(child: new Text('发现好东西'),),
-        backgroundColor: Colors.pink,
+        backgroundColor: Colors.black,
         bottom: new TabBar(
           indicatorColor: Colors.white,
           unselectedLabelStyle: TextStyle(fontSize: 12.0),
@@ -57,7 +57,7 @@ class _foundState extends State<found> with SingleTickerProviderStateMixin{
         controller: _tabController,
         children: <Widget>[
           new Center(child: grid()),//最新页面
-          new Center(child: VideoApp()),//最热页面
+          new Center(child: video()),//最热页面
           new Center(child: new Text('巴士')),//我的发布页面
         ],
       ),
@@ -95,7 +95,7 @@ class _gridState extends State<grid> {
             foregroundColor: Colors.black,
             backgroundColor: Colors.green[200],
             child: new Text('洗发'),
-            heroTag: null,
+            heroTag: "button1",
           ),
           ),
          Container(
@@ -108,7 +108,7 @@ class _gridState extends State<grid> {
             foregroundColor: Colors.blue,
             backgroundColor: Colors.yellow,
             child: new Text('吹发'),
-            heroTag: null,
+            heroTag: "button2",
           ),
           ),
           Container(
@@ -122,7 +122,7 @@ class _gridState extends State<grid> {
             foregroundColor: Colors.purple[400],
             backgroundColor: Colors.pink[300],
             child: new Text('护理'),
-            heroTag: null,
+            heroTag:"button3",
           ),
           ),
         ],
@@ -145,7 +145,7 @@ class _gridState extends State<grid> {
             foregroundColor: Colors.black,
             backgroundColor: Colors.brown[300],
             child: new Text('盲区'),
-            heroTag: null,
+            heroTag:"button4",
           ),
           ),
          Container(
@@ -158,7 +158,7 @@ class _gridState extends State<grid> {
             foregroundColor: Colors.white,
             backgroundColor: Colors.black,
             child: new Text('造型'),
-            heroTag: null,
+            heroTag: "button5",
           ),
           ),
           Container(
@@ -172,7 +172,7 @@ class _gridState extends State<grid> {
             foregroundColor: Colors.black,
             backgroundColor: Colors.red,
             child: new Text('工具'),
-            heroTag: null,
+            heroTag: "button6",
           ),
           ),
         ],
@@ -192,7 +192,7 @@ class _gridState extends State<grid> {
             foregroundColor: Colors.lightBlue,
             backgroundColor: Colors.black,
             child: new Text('待续'),
-            heroTag: null,
+            heroTag:"button7",
           ),
           ),
          Container(
@@ -202,7 +202,7 @@ class _gridState extends State<grid> {
             foregroundColor: Colors.lightBlue,
             backgroundColor: Colors.black,
             child: new Text('待续'),
-            heroTag: null,
+            heroTag: "button8",
           ),
           ),
           Container(
@@ -213,7 +213,7 @@ class _gridState extends State<grid> {
             foregroundColor: Colors.lightBlue,
             backgroundColor: Colors.black,
             child: new Text('待续'),
-            heroTag: null,
+            heroTag: "button9",
           ),
           ),
         ],

@@ -82,7 +82,7 @@ class _IndexPageState extends State<IndexPage> {
         backgroundColor: Colors.redAccent,
         onPressed: (){
           Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
-            return AddPage();
+            return Edit();
           }));
         },
         child: Icon(
@@ -98,6 +98,7 @@ class _IndexPageState extends State<IndexPage> {
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
         items: bottomTabs,
+        fixedColor: Colors.black,
         onTap: (index){
           setState(() {
             currentIndex =index;

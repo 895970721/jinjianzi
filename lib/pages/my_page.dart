@@ -22,7 +22,7 @@ class _personState extends State<person> with SingleTickerProviderStateMixin{
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor:Colors.pink,
+        backgroundColor:Colors.black,
         title: new Center(child: new Text('小小泽泽')),
         bottom: new TabBar(
           indicatorColor: Colors.white,
