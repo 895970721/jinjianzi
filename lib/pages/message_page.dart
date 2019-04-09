@@ -22,7 +22,7 @@ class _messageState extends State<message> with SingleTickerProviderStateMixin{
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Colors.pink,
+        backgroundColor: Colors.black,
         title: new Center(child: new Text('消息')),
         bottom: new TabBar(
           indicatorColor: Colors.white,

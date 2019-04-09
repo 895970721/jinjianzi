@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: MaterialApp(
-        title: 'jinjianzi',
+        title: '金剪子',
         debugShowCheckedModeBanner: false,
         home: StartPage(),
       ),
