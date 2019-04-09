@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../service/service_method.dart';
 import '../../config/service_url.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Home_details extends StatefulWidget {
   Home_details({Key key,this.works_id}):super(key:key);
@@ -27,7 +28,22 @@ class Home_detailsState extends State<Home_details> {
     });
     return Scaffold(
       appBar: AppBar(
-        title: Text('发现'),
+        title: Container(
+            child: Text(
+              "发现",
+              style: TextStyle(
+                color:Colors.black,
+                fontSize: ScreenUtil().setSp(30)
+                ),
+              ),
+          ),
+          backgroundColor: Color(0xFFF9F9F9),
+          centerTitle: true,
+          elevation: 0.5,
+          brightness: Brightness.light,
+          iconTheme: IconThemeData(
+            color: Color(0xFF4A4A4A),
+          ),
       ),
       body:FutureBuilder(
         future: request(work_url,formData:formData),
@@ -50,17 +66,45 @@ class Home_detailsState extends State<Home_details> {
         child: Column(
          children: <Widget>[
            Container(
-             child: Text(list[0]['works_title']),
+             height: ScreenUtil().setHeight(100),
+             alignment: Alignment.center,
+             child: Text(
+                list[0]['works_title'],
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize:ScreenUtil().setSp(30),
+                  fontStyle: FontStyle.italic
+                  ),
+              ),
            ),
            Container(
+             width: ScreenUtil().setWidth(750),
              child: Image(
                image: NetworkImage(list[0]['img_url']),
                fit: BoxFit.fill,
                ),
            ),
            Container(
-             child: Text(list[0]['content']),
+             height: ScreenUtil().setHeight(200),
+             padding: EdgeInsets.fromLTRB(10,10,0,0),
+             child: Text(
+               list[0]['content'],
+               maxLines: 3,
+               overflow: TextOverflow.ellipsis,
+               style: TextStyle(
+                 fontSize: ScreenUtil().setSp(25)
+              ),
+            ),
            ),
+           Container(
+             height: ScreenUtil().setHeight(100),
+             child: Row(
+               children: <Widget>[
+                 Icon(Icons.favorite_border),
+                 Text(list[0]["good_number"].toString()),
+               ],
+             )
+           )
          ],
         )
       );

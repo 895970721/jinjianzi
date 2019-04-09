@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './login.dart';
 
 class person extends StatefulWidget {
   @override
@@ -22,28 +23,9 @@ class _personState extends State<person> with SingleTickerProviderStateMixin{
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor:Colors.pink,
-        title: new Center(child: new Text('小小泽泽')),
-        bottom: new TabBar(
-          indicatorColor: Colors.white,
-          unselectedLabelStyle: TextStyle(fontSize: 12.0),
-          labelStyle: new TextStyle(fontSize: 16.0),
-          tabs: <Widget>[
-            new Tab(
-              icon: new Icon(Icons.account_circle),
-              text: '资料',
-            ),
-            new Tab(
-              icon: new Icon(Icons.visibility),
-              text: '关注',
-            ),
-            new Tab(
-              icon: new Icon(Icons.supervised_user_circle),
-              text: '粉丝',
-            ),
-          ],
-          controller: _tabController,
-        ),
+        backgroundColor:Colors.white,
+        title: top_bar(),
+        bottom: tab_bar()
       ),
       body: new TabBarView(
         controller: _tabController,
@@ -54,5 +36,77 @@ class _personState extends State<person> with SingleTickerProviderStateMixin{
         ],
       ),
     );
+  }
+
+  Widget top_bar(){
+    return Container(
+      child: Center(
+        child: InkWell(
+          child: Text(
+            "未登陆",
+            style: TextStyle(
+              color: Colors.black
+            ),
+          ),
+          onTap: (){
+            Navigator.push(
+            context,
+            new MaterialPageRoute(
+            builder: (BuildContext context){
+            return Login();
+                }
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget tab_bar(){
+    return new TabBar(
+          indicatorColor: Colors.red,
+          unselectedLabelStyle: TextStyle(fontSize: 12.0),
+          labelStyle: new TextStyle(fontSize: 16.0),
+          tabs: <Widget>[
+            new Tab(
+              icon: new Icon(
+                Icons.account_circle,
+                color: Colors.blue,
+                ),
+              child: Text(
+                "资料",
+                style: TextStyle(
+                  color: Colors.black
+                  ),
+                ),
+            ),
+            new Tab(
+              icon: new Icon(
+                Icons.visibility,
+                color: Colors.green,
+                ),
+              child: Text(
+                "收藏",
+                style: TextStyle(
+                  color: Colors.black
+                  ),
+                ),
+            ),
+            new Tab(
+              icon: new Icon(
+                Icons.favorite_border,
+                color: Colors.red,
+                ),
+              child: Text(
+                "赞过",
+                style: TextStyle(
+                  color: Colors.black
+                  ),
+                ),
+            ),
+          ],
+          controller: _tabController,
+        );
   }
 }

@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
       appBar: AppBar(
         title: HeadWidget(),
         backgroundColor: Colors.white,
+        centerTitle: true,
       ),
       body: HomeContent(),
     );

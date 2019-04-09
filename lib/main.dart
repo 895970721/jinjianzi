@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'pages/index_page.dart';
+import 'pages/start_page.dart';
+
 
 void main () {
   runApp(MyApp());
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'jinjianzi',
         debugShowCheckedModeBanner: false,
-        home: IndexPage(),
+        home: StartPage(),
       ),
     );
   }
