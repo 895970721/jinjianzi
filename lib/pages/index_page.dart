@@ -5,7 +5,9 @@ import 'found_page.dart';
 import 'message_page.dart';
 import 'my_page.dart';
 import 'add_page.dart';
+import 'login.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../bus/event_bus.dart';
 
 
 class IndexPage extends StatefulWidget {
@@ -15,7 +17,7 @@ class IndexPage extends StatefulWidget {
 class _IndexPageState extends State<IndexPage> {
   int currentIndex=0;//当前页面的索引
   var currentPage;//当前页面
-
+  String username='';
 
   //重写init方法
   @override
@@ -24,11 +26,11 @@ class _IndexPageState extends State<IndexPage> {
     super.initState();
   }
   ////保存页面的数组
-  final List<Widget> tabBodies = [
+  List<Widget> tabBodies = [
     HomePage(),
     found(),
     message(),
-    person()
+    person(),
   ];
   
   ///保存底部导航栏组件
@@ -100,6 +102,18 @@ class _IndexPageState extends State<IndexPage> {
         items: bottomTabs,
         fixedColor: Colors.black,
         onTap: (index){
+          if(index==3){
+            if(username==''){
+              Navigator.push<String>(context, new MaterialPageRoute(builder: (BuildContext context){
+                return Login();
+              })).then((String result){
+                setState(() {
+                  username = result;
+                  eventBus.fire(new UserLoggedInEvent(username));
+                });
+              });
+            }
+          };
           setState(() {
             currentIndex =index;
             currentPage =tabBodies[currentIndex]; 

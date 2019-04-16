@@ -30,6 +30,8 @@ dependencies:
   chewie: ^0.9.6
   image_picker: ^0.4.12
   amap_location: ^0.1.0
+  fluttertoast: ^3.0.1
+  event_bus: ^1.1.0
 
 dev_dependencies:
   flutter_test:

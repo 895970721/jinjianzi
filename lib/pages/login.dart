@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'register.dart';
+import '../service/service_method.dart';
+import '../config/service_url.dart';
+import 'package:dio/dio.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'index_page.dart';
 
 class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
@@ -13,6 +18,9 @@ class _LoginState extends State<Login> {
   //账号密码的焦点控制器
   FocusNode user_focusNode = new FocusNode();
   FocusNode pwd_focusNode = new FocusNode();
+
+  //验证是否通过变量
+  String ifsuccess = '';
 
   @override
   void initState() {
@@ -116,6 +124,7 @@ class _LoginState extends State<Login> {
         controller: pwdController,
         focusNode: pwd_focusNode,
         maxLines: 1,
+        obscureText: true,
         decoration: InputDecoration(
           prefixIcon:Icon(Icons.lock),
           hintText: '密码',
@@ -133,7 +142,9 @@ class _LoginState extends State<Login> {
         borderRadius: BorderRadius.circular(20)
       ),
       child: RaisedButton(
-        onPressed: (){},
+        onPressed: (){
+          _login();
+        },
         child: Text("登陆"),
         textColor: Colors.white,
         color: Colors.black,
@@ -168,6 +179,46 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+
+  void _login() async{
+    String username = userController.text;
+    String password = pwdController.text;
+    await _verify(username,password);
+    if(ifsuccess=='账号或密码错误'){
+      Fluttertoast.showToast(
+        msg: "账号或密码错误",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIos: 1,
+        backgroundColor: Colors.blue,
+        textColor: Colors.white,
+        fontSize: 16.0
+      );
+    }else{
+      Fluttertoast.showToast(
+        msg: "登陆成功",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIos: 1,
+        backgroundColor: Colors.blue,
+        textColor: Colors.white,
+        fontSize: 16.0
+      );
+      Navigator.of(context).pop(username);
+      ifsuccess = '';
+    }
+  }
+
+  void _verify(String user,String pwd)async{
+    FormData formData = new FormData.from({
+      'username':user,
+      'password':pwd,
+    });
+    await request(login_url,formData:formData).then((val){
+      var data = val;
+      ifsuccess = data;
+    });
   }
 
 }
