@@ -170,7 +170,7 @@ class Home_detailsState extends State<Home_details> {
            ),
            Container(
              alignment: Alignment.center,
-             width: ScreenUtil().setWidth(60),
+             width: ScreenUtil().setWidth(90),
              height: ScreenUtil().setHeight(100),
              child: Row(
                children: <Widget>[
