@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../service/service_method.dart';
 import '../../config/service_url.dart';
 import 'home_details.dart';
+import '../../bus/event_bus.dart';
 
 class HomeContent extends StatefulWidget {
   _HomeContentState createState() => _HomeContentState();
@@ -15,8 +16,18 @@ class _HomeContentState extends State<HomeContent>{
 
   void initState() { 
     super.initState();
+    _listen();
     _getWorksList();
   }
+
+  void _listen(){
+    eventBus.on<UserEvent>().listen((event){
+      setState(() {
+        user_id = event.id;
+      });
+    });
+  }
+  int user_id;
 
   var workslist =[];
 
@@ -35,7 +46,7 @@ class _HomeContentState extends State<HomeContent>{
           ),
             itemCount: workList.length,
             itemBuilder:(context,index){
-              return WorksItem(workList,index);
+              return WorksItem(workList,index,user_id);
           }
         ),
         loadMore: ()async{
@@ -60,14 +71,14 @@ class _HomeContentState extends State<HomeContent>{
       )
     );
   }
-  Widget WorksItem(workList,index){
+  Widget WorksItem(workList,index,int user_id){
   return InkWell(
     onTap: (){
       Navigator.push(
         context,
         new MaterialPageRoute(
           builder: (BuildContext context){
-            return new Home_details(works_id:workList[index]['works_id']);
+            return new Home_details(works_id:workList[index]['works_id'],user_id:user_id);
           }
         ),
       );

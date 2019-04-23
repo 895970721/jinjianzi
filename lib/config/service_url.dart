@@ -3,3 +3,7 @@ const work_url = 'http://jinjianzi.top:8080/api/items';//根据id查作品信息
 const login_url ='http://jinjianzi.top:8080/api/login';//登陆接口
 const user_info_url='http://jinjianzi.top:8080/api/getInfo';//查询用户信息接口
 const register_url = 'http://jinjianzi.top:8080/api/register';//注册接口
+const like_works_url = 'http://jinjianzi.top:8080/api/like_works';//根据用户id查找点赞的作品
+const add_like_url = 'http://jinjianzi.top:8080/api/add_like';//点赞接口
+const remove_like_url = 'http://jinjianzi.top:8080/api/remove_like';//取消点赞接口
+const isLike_url = 'http://jinjianzi.top:8080/api/isLike';//是否点赞接口

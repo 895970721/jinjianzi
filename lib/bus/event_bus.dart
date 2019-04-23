@@ -9,3 +9,10 @@ class UserLoggedInEvent {
     this.text = text;
   }
 }
+
+class UserEvent{
+  int id;
+  UserEvent(int id){
+    this.id = id;
+  }
+}
